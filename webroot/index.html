@@ -14,10 +14,10 @@
       xhttp.open("GET", "/ping?" + Math.random(), true);
       xhttp.send();
       }
-      
-      for (i=0; i<100; i++)
+      n = 100
+      for (i=0; i<n; i++)
 		      {
-		      window.setTimeout(ajax,100*Math.random())
+		      window.setTimeout(ajax,2*n-i)
 		      }
 		      </script>
   </head>
