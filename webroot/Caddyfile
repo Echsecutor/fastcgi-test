@@ -1,0 +1,4 @@
+localhost:3030
+fastcgi / localhost:2020 {
+  ext    !jpg !jpeg !gif !png !ico !bmp !svg !css !js !po !txt !json !html !woff2
+}

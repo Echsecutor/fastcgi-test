@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <title>
+      fastCGI load test
+    </title>
+    <script>
+      function ajax(){
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+      document.getElementById("out").innerHTML = this.responseText;
+      }
+      };
+      xhttp.open("GET", "/ping?" + Math.random(), true);
+      xhttp.send();
+      }
+      
+      for (i=0; i<100; i++)
+		      {
+		      window.setTimeout(ajax,100*Math.random())
+		      }
+		      </script>
+  </head>
+  <body>
+    <h1>fastCGI load test</h1>
+    <p>
+      This site fires a lot of ajax requests to the fastcgi back end. Watch the response times!
+    </p>
+    <div id="out"></div>
+  </body>
+</html>
