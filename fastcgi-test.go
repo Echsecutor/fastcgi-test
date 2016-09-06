@@ -6,6 +6,8 @@ import (
 	"net"
 	"net/http"
 	"net/http/fcgi"
+	"os"
+	"path/filepath"
 	"strconv"
 )
 
@@ -13,7 +15,13 @@ func main() {
 	var port int
 	var folder string
 	flag.IntVar(&port, "port", 2020, "port to listen on for fastcgi connections")
-	flag.StringVar(&folder, "folder", "C:\\", "folder to browse (just to return something)")
+
+	dir, err := filepath.Abs(filepath.Dir(os.Args[0]))
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	flag.StringVar(&folder, "folder", dir, "folder to browse (just to return something)")
 	flag.Parse()
 
 	log.Println("Running fastcgi-test on localhost:", port, " serving a browser in", folder)
